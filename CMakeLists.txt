@@ -103,6 +103,12 @@ if("${CMAKE_BUILD_TYPE}" STREQUAL "")
 or CMAKE_C_FLAGS are used), Debug, Release, RelWithDebInfo, MinSizeRel." FORCE)
 endif()
 
+IF(CMAKE_BUILD_TYPE MATCHES RELEASE)
+ELSE()
+	IF(NOT CMAKE_DEBUG_POSTFIX)
+	  SET(CMAKE_DEBUG_POSTFIX d)
+	ENDIF()
+ENDIF()
 
 find_library(LIBZ_LIBRARY
     NAMES zdll.lib z zlib.lib
